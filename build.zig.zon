@@ -1,0 +1,11 @@
+.{
+    .name = "universal-headers",
+    .version = "0.0.1",
+
+    .dependencies = .{
+        .arocc = .{
+            .url = "https://github.com/vexu/arocc/archive/324d735c2cba7419ff7fcd65840d9e00b14ab858.tar.gz",
+            .hash = "122017c8480bc7457b03e35cb91573da3061c0125cae85a7222378ad6af9e6334445",
+        },
+    },
+}

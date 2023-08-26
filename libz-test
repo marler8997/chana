@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+rm -rf $script_dir/zig-out/zlib-ana
+
+zig build
+
+if [ ! -e $script_dir/zig-out/zlib ]; then
+    set -x
+    git clone https://github.com/madler/zlib $script_dir/zig-out/zlib
+    set +x
+fi
+
+(cd $script_dir/zig-out/zlib && git reset --hard HEAD)
+(cd $script_dir/zig-out/zlib && git clean -xffd)
+
+set -x
+export CC="gcc"
+export CC="$script_dir/zig-out/bin/chana $script_dir/zig-out/zlib-ana -- $CC"
+
+(cd zig-out/zlib && ./configure --prefix=$script_dir/zig-out/zlib/install)
+make -C $script_dir/zig-out/zlib install
