@@ -1,0 +1,14 @@
+.{
+    .name = "chana",
+    .version = "0.0.0",
+    .minimum_zig_version = "0.12.0",
+    .dependencies = .{
+        .aro = .{
+            .url = "https://github.com/ehaas/arocc/archive/ed3b422b40c345d31aee83c7de682954bed33bcd.tar.gz",
+            .hash = "1220d0d145b63bdb5603212e36edcefb582d4408216f6a4ca7d5a910d5d0b6dd6bd0",
+        },    
+    },
+    .paths = .{
+        "",
+    },
+}
